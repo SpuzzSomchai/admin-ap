@@ -8,7 +8,7 @@ start() {
 }
 
 stop() {
-	/mnt/sda0/debian_armhf/flossware/bootdown.sh
+	/mnt/sda0/debian_armhf/opt/flossware/bootdown.sh
 #	/mnt/sda/debian/flossware/bootdown.sh
 #	/mnt/sda/raspbian/flossware/bootdown.sh
 }

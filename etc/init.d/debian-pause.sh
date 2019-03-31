@@ -23,5 +23,5 @@ echo "------------------------------------------------" >> ${LOG_FILE}
 echo "USB is available:  `date`"    >> ${LOG_FILE}
 echo "------------------------------------------------" >> ${LOG_FILE}
 
-${DEBIAN_DIR}/flossware/flossware.sh
+${DEBIAN_DIR}/opt/flossware/flossware.sh
 

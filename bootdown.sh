@@ -2,9 +2,7 @@
 
 debdir=/mnt/sda/debian_armhf
 
-/bin/busybox chroot $debdir /flossware/shutdown.sh
-
-#umount $debdir/etc/ssh
+/bin/busybox chroot $debdir /opt/flossware/shutdown.sh
 
 umount $debdir/opt/nas
 umount $debdir/opt/shared

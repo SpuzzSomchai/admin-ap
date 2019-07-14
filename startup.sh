@@ -38,7 +38,8 @@ chmod 700 -R /etc/ssh /var/run/sshd
 /etc/init.d/dovecot           start
 /etc/init.d/nis               start
 /etc/init.d/ssh               start
-/etc/init.d/samba             start
+/etc/init.d/nmbd              start
+/etc/init.d/smbd              start
 /etc/init.d/rsync             start
 /etc/init.d/plexmediaserver   start
 

@@ -6,7 +6,7 @@
 #DEBIAN_DIR=/mnt/sda/raspbian
 #LOG_FILE=/var/log/raspbian.log
 
-DEBIAN_DIR=/mnt/sda0/debian_armhf
+DEBIAN_DIR=/mnt/sdg1/debian_armhf
 LOG_FILE=/var/log/debian_armhf.log
 
 echo "------------------------------------------------" >  ${LOG_FILE}

@@ -2,15 +2,9 @@
 
 # ------------------------------------------------------
 
-swapon /opt/swap/swapfile.img
+swapon /mnt/swap
 
 # ------------------------------------------------------
-
-chmod -R 0700 /var/lib/samba
-chmod -R 0700 /var/log/samba
-chmod -R 0700 /var/run/samba
-chmod    0755 /var/run/samba/nmbd
-chmod -R 0755 /var/run/samba/msg.lock
 
 chmod 777 /dev/shm
 
@@ -24,10 +18,16 @@ chmod 777 /run/screen
 chmod 700 -R /etc/ssh /var/run/sshd
 
 # ------------------------------------------------------
+# Elasticsearch settings...
+# ------------------------------------------------------
+
+sysctl vm.max_map_count=262144
+ulimit -n 65535
+
+# ------------------------------------------------------
 
 /usr/sbin/ntpdate-debian
 
-/etc/init.d/dnsmasq           start
 /etc/init.d/ntp               start
 /etc/init.d/rsyslog           start
 /etc/init.d/cron              start
@@ -35,13 +35,16 @@ chmod 700 -R /etc/ssh /var/run/sshd
 /etc/init.d/nfs-common        start
 /etc/init.d/nfs-kernel-server start
 /etc/init.d/postfix           start
-/etc/init.d/dovecot           start
-/etc/init.d/nis               start
+#/etc/init.d/nis               start
 /etc/init.d/ssh               start
-/etc/init.d/nmbd              start
-/etc/init.d/smbd              start
 /etc/init.d/rsync             start
-/etc/init.d/plexmediaserver   start
+
+# ------------------------------------------------------
+
+/etc/init.d/mysql             start
+/etc/init.d/postgresql        start
+
+#/opt/elasticsearch/bin/elasticsearch -p /var/run/elasticsearch.pid -d
 
 # ------------------------------------------------------
 
@@ -49,7 +52,25 @@ mount -a
 
 # ------------------------------------------------------
 
-#touch /tmp/plex_ntp_updated
+mkdir -p /mnt/admin-ap/etc
+mkdir -p /mnt/admin-ap/home
+mkdir -p /mnt/admin-ap/backups
+mkdir -p /mnt/admin-ap/media
+mkdir -p /mnt/admin-ap/nas
+mkdir -p /mnt/admin-ap/shared
+mkdir -p /mnt/admin-ap/root
+
+mkdir -p /mnt/bedroom-ap
+
+mount admin-ap:/etc           /mnt/admin-ap/etc
+mount admin-ap:/home          /mnt/admin-ap/home
+mount admin-ap:/opt/backups   /mnt/admin-ap/backups
+mount admin-ap:/opt/media     /mnt/admin-ap/media
+mount admin-ap:/opt/nas       /mnt/admin-ap/nas
+mount admin-ap:/opt/shared    /mnt/admin-ap/shared
+mount admin-ap:/root          /mnt/admin-ap/root
+
+mount bedroom-ap:/tmp/mnt/sda1/debian_armel/mnt  /mnt/bedroom-ap
 
 # ------------------------------------------------------
 
